@@ -20,9 +20,9 @@ public class MeleeWeapon extends Weapon{
     private Integer weaponSkill;
 
     @Override
-    public boolean evalHit(Jet jet) {
+    public long evalHit(Jet jet) {
         //return dice.getValue() > weaponSkill;
-        return true;
+        return 1;
     }
 
 }

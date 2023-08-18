@@ -1,18 +1,25 @@
 package com.arbonoid.warptime.bo.roll;
 
-import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+@ToString(callSuper=true)
+@Getter
 @SuperBuilder
 public class ToHitDice extends Dice{
 
+    private boolean hit;
+
     public static ToHitDice build(DiceType diceType, int value)
     {
-        return ToHitDice.builder().max(diceType.getMax()).value(value).diceType(diceType).build();
+        return ToHitDice.builder().max(diceType.getMax()).value(value).diceType(diceType).hit(false).build();
     }
 
-    public boolean hit(int threshold)
+    public boolean checkHit(int threshold)
     {
-        return value >= threshold;
+        this.hit = (value >= threshold);
+        return this.hit;
     }
+
 }

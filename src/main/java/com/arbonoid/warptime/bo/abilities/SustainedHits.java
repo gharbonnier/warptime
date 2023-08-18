@@ -20,7 +20,7 @@ public class SustainedHits implements Ability{
     @Override
     public void process(Weapon weapon, Jet jet) {
         List<Dice> criticalDices = new ArrayList<Dice>();
-        for(Dice dice : jet.getJet())
+        for(Dice dice : jet.getDices())
             if(dice.isCritical()) {
                 criticalDices.add(dice);
             }

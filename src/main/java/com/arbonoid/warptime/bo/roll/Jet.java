@@ -4,8 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -13,38 +14,17 @@ import static lombok.AccessLevel.PRIVATE;
 @Getter
 @Setter
 @ToString
+@SuperBuilder
 @FieldDefaults(level = PRIVATE)
-public class Jet {
+public abstract class Jet {
 
-    List<Dice> jet;
+    protected List<Dice> dices;
 
-    public static Jet build(DiceType type, int numberOfDice)
-    {
-        Jet jet = new Jet();
-        jet.addNewDice(type, numberOfDice);
-        return jet;
-    }
-
-    private Jet()
-    {
-        jet = new ArrayList<Dice>();
-    }
-
-    private void addNewDice(DiceType type, int numberOfDice)
-    {
-        for(int i=0;i<numberOfDice;i++)
-            jet.add(ToHitDice.build(type,0));
-    }
-
-    public void add(DiceType type, int numberOfDice, int diceValue)
-    {
-        for(int i=0;i<numberOfDice;i++)
-            jet.add(ToHitDice.build(type,diceValue));
-    }
+    public abstract void add(DiceType type, int numberOfDice, int diceValue);
 
     public Jet roll()
     {
-        for(Dice dice : jet)
+        for(Dice dice : dices)
             dice.roll();
         return this;
     }

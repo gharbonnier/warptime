@@ -3,6 +3,7 @@ package com.arbonoid.warptime.bo;
 import com.arbonoid.warptime.bo.abilities.EAbility;
 import com.arbonoid.warptime.bo.roll.Dice;
 import com.arbonoid.warptime.bo.roll.Jet;
+import com.arbonoid.warptime.bo.roll.ToHitJet;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
@@ -19,11 +20,10 @@ public class RangedWeapon extends Weapon{
     private Integer ballisticSkill;
 
     @Override
-    public boolean evalHit(Jet jet) {
+    public long evalHit(Jet jet) {
         for(EAbility ability : abilities)
             ability.getAbility().process(this, jet);
-        //return dice.getValue() > ballisticSkill;
-        return true;
+        return ((ToHitJet)jet).getNbHit(ballisticSkill);
     }
 
 }

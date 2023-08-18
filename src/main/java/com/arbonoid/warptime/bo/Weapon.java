@@ -4,6 +4,7 @@ import com.arbonoid.warptime.bo.abilities.EAbility;
 import com.arbonoid.warptime.bo.roll.Dice;
 import com.arbonoid.warptime.bo.roll.DiceType;
 import com.arbonoid.warptime.bo.roll.Jet;
+import com.arbonoid.warptime.bo.roll.ToHitJet;
 import com.arbonoid.warptime.tools.ToWoundTable;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -31,7 +32,7 @@ public abstract class Weapon {
 
     EAbility[] abilities;
 
-    protected abstract boolean evalHit(Jet jet);
+    protected abstract long evalHit(Jet jet);
 
     public boolean evalWound(Integer endurance, Jet jet) {
         for(EAbility ability : abilities)
@@ -47,10 +48,10 @@ public abstract class Weapon {
      */
     public Jet fire(Target target)
     {
-        List<Boolean> results = new ArrayList<Boolean>();
-        Jet jet = Jet.build(DiceType.D6,this.attack).roll();
-        evalHit(jet);
-        return jet;
+        ToHitJet toHitJet = ToHitJet.build(DiceType.D6, this.attack);
+        toHitJet.roll();
+        evalHit(toHitJet);
+        return toHitJet;
     }
 
 }
