@@ -1,6 +1,5 @@
 package com.arbonoid.warptime.bo;
 
-import com.arbonoid.warptime.bo.roll.Dice;
 import com.arbonoid.warptime.bo.roll.Jet;
 import lombok.Getter;
 import lombok.Setter;

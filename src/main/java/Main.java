@@ -10,7 +10,7 @@ public class Main {
 
         Target target = Target.builder().endurance(8).build();
 
-        System.out.println( "Touche ? "+ bolter.fire(target).toString());
+        System.out.println( "Touche ? "+ bolter.fire(target));
 
     }
 

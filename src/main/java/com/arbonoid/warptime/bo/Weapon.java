@@ -46,12 +46,11 @@ public abstract class Weapon {
      * @param target
      * @return
      */
-    public Jet fire(Target target)
+    public long fire(Target target)
     {
-        ToHitJet toHitJet = ToHitJet.build(DiceType.D6, this.attack);
+        ToHitJet toHitJet = ToHitJet.build(DiceType.D6, this.attack, 6);
         toHitJet.roll();
-        evalHit(toHitJet);
-        return toHitJet;
+        return evalHit(toHitJet);
     }
 
 }

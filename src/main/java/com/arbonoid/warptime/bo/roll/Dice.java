@@ -15,6 +15,8 @@ public abstract class Dice {
 
     protected DiceType diceType;
 
+    protected Integer criticalThreshold;
+
     public Integer roll()
     {
         this.value = (int)(Math.random()*max + 1);
@@ -23,7 +25,7 @@ public abstract class Dice {
 
     public boolean isCritical()
     {
-        return value >= 6;
+        return value >= criticalThreshold;
     }
 
 }

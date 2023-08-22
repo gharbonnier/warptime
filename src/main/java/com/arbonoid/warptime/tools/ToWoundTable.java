@@ -2,7 +2,7 @@ package com.arbonoid.warptime.tools;
 
 public class ToWoundTable {
 
-    public static Integer minDiseValueToWound(Integer force, Integer endurance)
+    public static Integer minDiceValueToWound(Integer force, Integer endurance)
     {
         int compareToResult = endurance.compareTo(force);
         if(  compareToResult == 0)

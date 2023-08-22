@@ -20,7 +20,7 @@ public abstract class Jet {
 
     protected List<Dice> dices;
 
-    public abstract void add(DiceType type, int numberOfDice, int diceValue);
+    public abstract void add(DiceType type, int numberOfDice, int diceValue, int criticalThreshold);
 
     public Jet roll()
     {

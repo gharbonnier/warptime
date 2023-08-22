@@ -11,9 +11,9 @@ public class ToHitDice extends Dice{
 
     private boolean hit;
 
-    public static ToHitDice build(DiceType diceType, int value)
+    public static ToHitDice build(DiceType diceType, int value, int criticalThreshold)
     {
-        return ToHitDice.builder().max(diceType.getMax()).value(value).diceType(diceType).hit(false).build();
+        return ToHitDice.builder().max(diceType.getMax()).value(value).criticalThreshold(criticalThreshold).diceType(diceType).hit(false).build();
     }
 
     public boolean checkHit(int threshold)

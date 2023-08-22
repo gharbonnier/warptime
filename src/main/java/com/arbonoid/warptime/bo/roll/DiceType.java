@@ -7,9 +7,9 @@ public enum DiceType {
 
     D3(3), D6(6);
 
-    private int max;
+    private final int max;
 
-    private DiceType(int max) {
+    DiceType(int max) {
         this.max = max;
     }
-    }
+}

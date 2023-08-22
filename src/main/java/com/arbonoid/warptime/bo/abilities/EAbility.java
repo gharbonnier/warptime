@@ -7,9 +7,9 @@ public enum EAbility {
 
     SUSTAINED_HITS_2(new SustainedHits(2));
 
-    private Ability ability;
+    private final Ability ability;
 
-    private EAbility(Ability ability)
+    EAbility(Ability ability)
     {
         this.ability = ability;
     }

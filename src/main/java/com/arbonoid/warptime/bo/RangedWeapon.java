@@ -23,7 +23,7 @@ public class RangedWeapon extends Weapon{
     public long evalHit(Jet jet) {
         for(EAbility ability : abilities)
             ability.getAbility().process(this, jet);
-        return ((ToHitJet)jet).getNbHit(ballisticSkill);
+        return ((ToHitJet)jet).getNbSucceedHit(ballisticSkill);
     }
 
 }

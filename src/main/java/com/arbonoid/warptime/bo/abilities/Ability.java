@@ -5,6 +5,6 @@ import com.arbonoid.warptime.bo.Weapon;
 
 public interface Ability {
 
-    public void process(Weapon weapon, Jet jet);
+    void process(Weapon weapon, Jet jet);
 
 }
