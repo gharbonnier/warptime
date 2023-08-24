@@ -8,9 +8,11 @@ public class Main {
     {
         RangedWeapon bolter = RangedWeapon.builder().ballisticSkill(3).force(4).armourPenetration(0).attack(2).damage(1).abilities(new EAbility[]{EAbility.SUSTAINED_HITS_2}).build();
 
-        Target target = Target.builder().endurance(8).build();
+        Target target = Target.builder().endurance(3).build();
 
-        System.out.println( "Touche ? "+ bolter.fire(target));
+        System.out.println( "blessures ? "+ bolter.fire(target));
+        System.out.println( "blessures ? "+ bolter.fire(target));
+        System.out.println( "blessures ? "+ bolter.fire(target));
 
     }
 

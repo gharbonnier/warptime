@@ -1,9 +1,10 @@
 package com.arbonoid.warptime.bo;
 
 import com.arbonoid.warptime.bo.abilities.EAbility;
-import com.arbonoid.warptime.bo.roll.Dice;
+import com.arbonoid.warptime.bo.roll.DiceType;
 import com.arbonoid.warptime.bo.roll.Jet;
-import com.arbonoid.warptime.bo.roll.ToHitJet;
+import com.arbonoid.warptime.bo.roll.HitJet;
+import com.arbonoid.warptime.bo.roll.WoundJet;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
@@ -23,7 +24,23 @@ public class RangedWeapon extends Weapon{
     public long evalHit(Jet jet) {
         for(EAbility ability : abilities)
             ability.getAbility().process(this, jet);
-        return ((ToHitJet)jet).getNbSucceedHit(ballisticSkill);
+        return ((HitJet)jet).getNbSucceedHit(ballisticSkill);
+    }
+
+    @Override
+    public long fire(Target target)
+    {
+        HitJet hitJet = HitJet.build(DiceType.D6, this.attack, 6);
+        hitJet.roll();
+
+        WoundJet woundJet = WoundJet.build(DiceType.D6,(int)evalHit(hitJet),6);
+        woundJet.roll();
+        long result = evalWound(target,woundJet);
+
+        System.out.println(hitJet);
+        System.out.println(woundJet);
+
+        return result;
     }
 
 }
